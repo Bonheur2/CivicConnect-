@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StatCard from './StatCard';
-import ProfileDropdown from './ProfileDropdown';
 import RecentComplaints from './RecentComplaints';
 
 const Dashboard: React.FC = () => {
@@ -21,14 +20,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Top Navigation Bar */}
-      <div className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-end h-16">
-            <ProfileDropdown onLogout={handleLogout} />
-          </div>
-        </div>
-      </div>
+  
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">

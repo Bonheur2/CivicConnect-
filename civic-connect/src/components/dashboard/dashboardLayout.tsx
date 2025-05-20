@@ -37,7 +37,7 @@ const DashboardLayout: React.FC = () => {
             </div>
 
             {/* Right: Profile Dropdown */}
-            <div className="flex items-center">
+            <div className="flex items-center relative z-50">
               <ProfileDropdown onLogout={handleLogout} />
             </div>
           </div>
