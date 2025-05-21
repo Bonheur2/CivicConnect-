@@ -46,14 +46,12 @@ const ComplaintTracker: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
+
     if (!trackingId.trim()) {
       setError('Please enter a tracking ID');
       return;
     }
 
-    // TODO: Implement API call to fetch complaint status
-    // This is a mock response for demonstration
     setComplaint({
       id: trackingId,
       title: 'Pothole on Main Street',
@@ -73,7 +71,8 @@ const ComplaintTracker: React.FC = () => {
               Enter your tracking ID to check the status of your complaint
             </p>
           </div>
-          
+
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="trackingId" className="block text-sm font-medium text-gray-700">

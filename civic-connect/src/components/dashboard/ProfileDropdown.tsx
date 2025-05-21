@@ -37,9 +37,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ onLogout }) => {
         <Menu.Items className="absolute right-0 top-full mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-4 py-3">
             <p className="text-sm text-gray-500">Signed in as</p>
-            <p className="truncate text-sm font-medium text-gray-900">admin@example.com</p>
-          </div>
-          
+          </div>                                
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
@@ -64,6 +62,37 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ onLogout }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                   </svg>
                   My Complaints
+                </button>
+              )}
+            </Menu.Item>
+          </div>
+
+          <div className="py-1">
+             <Menu.Item>
+              {({ active }) => (
+                <button
+                  onClick={() => navigate('/dashboard/add-complaint')}
+                  className={`${active ? 'bg-gray-50' : ''} flex items-center px-4 py-2 text-sm text-gray-700 w-full text-left`}
+                >
+              {/* Complaint Form Icon */}
+              <svg className="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 3h3m-6 0h.01M9 19h.01" />
+              </svg>
+              Add Complaint
+                </button>
+              )}
+            </Menu.Item>
+             <Menu.Item>
+              {({ active }) => (
+                <button
+                  onClick={() => navigate('/dashboard/add-response')}
+                  className={`${active ? 'bg-gray-50' : ''} flex items-center px-4 py-2 text-sm text-gray-700 w-full text-left`}
+                >
+                   {/* Responses Icon */}
+              <svg className="h-5 w-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-.55.55a1 1 0 00-.27.68V19l-2 2v-3.17c-.02-.02-.04-.04-.07-.05L9 16z" />
+              </svg>
+                  Add Response
                 </button>
               )}
             </Menu.Item>

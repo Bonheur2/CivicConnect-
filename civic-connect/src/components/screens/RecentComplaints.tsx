@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ChevronDownIcon, FunnelIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { Menu, Transition } from '@headlessui/react';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 interface Complaint {
   id: string;
@@ -28,6 +29,8 @@ export default function RecentComplaints() {
   const [sortBy, setSortBy] = useState<'date' | 'status'>('date');
   const [isLoading, setIsLoading] = useState(true);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     // TODO: Replace with actual API call
     const fetchComplaints = async () => {
@@ -46,6 +49,16 @@ export default function RecentComplaints() {
             updatedAt: new Date('2024-03-15'),
           },
           // Add more mock data as needed
+          {
+            id: '2',
+            title: 'Street Light Out',
+            description: 'Dark street light near park',
+            status: 'In Progress',
+            category: 'Electricity',
+            location: '456 Oak Ave',
+            createdAt: new Date('2024-03-14'),
+            updatedAt: new Date('2024-03-16'),
+          },
         ];
         setComplaints(mockComplaints);
       } catch (error) {
@@ -71,6 +84,18 @@ export default function RecentComplaints() {
       }
       return a.status.localeCompare(b.status);
     });
+
+  // Placeholder functions for edit and delete actions
+  const handleEdit = (complaintId: string) => {
+    console.log('Edit complaint with ID:', complaintId);
+    navigate(`/dashboard/edit-complaint`);
+    // TODO: Implement navigation to edit page
+  };
+
+  const handleDelete = (complaintId: string) => {
+    console.log('Delete complaint with ID:', complaintId);
+    // TODO: Implement delete API call and update state
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -142,7 +167,7 @@ export default function RecentComplaints() {
             enter="transition duration-100 ease-out"
             enterFrom="transform scale-95 opacity-0"
             enterTo="transform scale-100 opacity-100"
-            leave="transition duration-75 ease-out"
+            leave="transition duration-75 ease-75"
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-95 opacity-0"
           >
@@ -195,6 +220,9 @@ export default function RecentComplaints() {
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+                    <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                      <span className="sr-only">Actions</span>
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -212,6 +240,20 @@ export default function RecentComplaints() {
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {format(complaint.createdAt, 'MMM d, yyyy')}
+                      </td>
+                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                        <button
+                          onClick={() => handleEdit(complaint.id)}
+                          className="text-indigo-600 hover:text-indigo-900 mr-4"
+                        >
+                          Edit<span className="sr-only">, {complaint.title}</span>
+                        </button>
+                        <button
+                          onClick={() => handleDelete(complaint.id)}
+                          className="text-red-600 hover:text-red-900"
+                        >
+                          Delete<span className="sr-only">, {complaint.title}</span>
+                        </button>
                       </td>
                     </tr>
                   ))}

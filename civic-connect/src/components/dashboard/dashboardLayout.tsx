@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import ProfileDropdown from './ProfileDropdown';
-import Logo from '../common/Logo';
+import { Link } from 'react-router-dom';
 
 const pageTitles: { [key: string]: string } = {
   '/dashboard': 'Dashboard',
@@ -9,6 +9,7 @@ const pageTitles: { [key: string]: string } = {
   '/dashboard/settings': 'Settings',
   '/dashboard/help': 'Help Center',
   '/dashboard/complaints': 'My Complaints',
+  '/dashboard/submit-complaints': 'Submit Complaint',
 };
 
 const DashboardLayout: React.FC = () => {
@@ -29,7 +30,10 @@ const DashboardLayout: React.FC = () => {
           <div className="flex items-center justify-between h-16">
             {/* Left: Logo and Page Title */}
             <div className="flex items-center space-x-8">
-              <Logo />
+            <Link to="/dashboard" className="flex items-center space-x-2">
+                <img src="/images/civic-connect-logo.png" alt="CivicConnect Logo" className="h-10 w-10 object-contain" />
+                <span className="text-2xl font-bold text-primary-600">CivicConnect</span>
+              </Link>
               <div className="h-6 w-px bg-gray-200" />
               <h1 className="text-xl font-semibold text-gray-900">
                 {title}

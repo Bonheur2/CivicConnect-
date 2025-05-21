@@ -40,8 +40,8 @@ const Layout: React.FC = () => {
             {/* Center: Navigation links */}
             <div className="hidden sm:flex flex-1 justify-center space-x-4">
               <Link to="/" className={navLinkClass('/')}>Home</Link>
-              <Link to="/submit-complaint" className={navLinkClass('/submit-complaint')}>Submit Complaint</Link>
-              <Link to="/track-complaint" className={navLinkClass('/track-complaint')}>Track Complaint</Link>
+              <Link to="dashboard/submit-complaint" className={navLinkClass('/submit-complaint')}>Submit Complaint</Link>
+              <Link to="dashboard/track-complaint" className={navLinkClass('/track-complaint')}>Track Complaint</Link>
             </div>
             {/* Right: Login button and mobile menu */}
             <div className="flex items-center">
@@ -86,14 +86,14 @@ const Layout: React.FC = () => {
               Home
             </Link>
             <Link
-              to="/submit-complaint"
+              to="dashboard/submit-complaint"
               className={mobileNavLinkClass('/submit-complaint')}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Submit Complaint
             </Link>
             <Link
-              to="/track-complaint"
+              to="dashboard/track-complaint"
               className={mobileNavLinkClass('/track-complaint')}
               onClick={() => setIsMobileMenuOpen(false)}
             >
